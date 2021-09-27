@@ -34,7 +34,7 @@ const dir_savevar = Ref(".")
 is the filename string to which `@savevar` saves the value of a variable.
 """
 fn_savevar(x::Symbol) = joinpath(dir_savevar[], string(x) * ".txt")
-fn_savevar(n::Base.RefValue,x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n[])*".txt")
+fn_savevar(n::Base.RefValue{Int64},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n[])*".txt")
 
 """
     @savevar(args...)
@@ -72,7 +72,8 @@ end
     fnum[]
 
 is the integer number added to the file name in the @savevarn macro. 
-Also is the number of file loaded in the @loadvarn macro
+Also is the number of file loaded in the @loadvarn macro.
+One can set an integer value, e.g., fnum[]=2.
 
 Example 1: `fnum[]=3;@savevarn x y` saves the variables x and y in the files `x_3.txt` and `y_3.txt`.
 
