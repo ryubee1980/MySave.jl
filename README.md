@@ -1,2 +1,2 @@
 # MySave
-Package for saving and loadding files.
+Package for saving and loading files.
