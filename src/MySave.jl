@@ -20,7 +20,10 @@ loadvar(fn) = read(fn, String) |> Meta.parse |> eval
 """
     dir_savevar[]
 
-is the default directory to which `@savevar` saves the values of variables.
+is the default directory to which `@savevar` saves the values of variables and from which `@loadvar` loads the saved file. Default directry is set to "." If one want to save at "./DIR", write
+
+    dir_savevar[]="DIR"
+
 """
 const dir_savevar = Ref(".")
 
