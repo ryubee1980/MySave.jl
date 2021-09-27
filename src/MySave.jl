@@ -1,4 +1,3 @@
-module MySave
 """
 Module for saving and loading variables.
 
@@ -8,6 +7,8 @@ macros: @savevar, @loadvar, @savevarn, @loadvarn
 
 variables: dir_savevar[], fnum[]
 """
+module MySave
+
 
 greet() = print("Hello My module for saving and loading files!")
 
