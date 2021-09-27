@@ -63,3 +63,6 @@ true #same values
 julia> (A,B)===(a,b)
 false #different variables
 ```
+
+# fnum[]
+The integer number added to the file name by @savevarn. Its default value is 0.
