@@ -78,7 +78,7 @@ Example 1: `file_num=3;@savevarn x y` saves the variables x and y in the files `
 
 Example 2: `file_num=3;X, Y=@loadvarn x y` load the values of x and y from the files `x_3.txt` and `y_3.txt`.
 """
-fnum=0
+fnum=Ref(0)
 
 """
     @savevarn(file_num, args...)
