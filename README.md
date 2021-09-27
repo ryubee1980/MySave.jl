@@ -2,7 +2,7 @@
 Package for saving and loading files.
 
 ## Usage
-# dir_savevar[]
+# dir_savevar[ ]
 This variable specifies the directory to which the macro @savevar/@savevarn saves files. The macro @loadvar/@loadvarn also loads files from this directory.
 Its default value is "."; that is, the macros save to (or, load from) the current directory "./". To change the directory to, for example, "./DIR/", execute
 ```sh
@@ -64,5 +64,5 @@ julia> (A,B)===(a,b)
 false #different variables
 ```
 
-# fnum[]
+# fnum[ ]
 The integer number added to the file name by @savevarn. Its default value is 0.
