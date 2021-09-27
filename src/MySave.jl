@@ -29,7 +29,7 @@ const dir_savevar = Ref(".")
 
 """
     fn_savevar(x::Symbol)
-    fn_savevar(n::Int64,x::Symbol)
+    fn_savevar(n::Base.RefValue{Int64},x::Symbol)
 
 is the filename string to which `@savevar` saves the value of a variable.
 """
@@ -82,12 +82,12 @@ Example 2: `fnum[]=3;X, Y=@loadvarn x y` load the values of x and y from the fil
 const fnum=Ref(0)
 
 """
-    @savevarn(file_num, args...)
+    @savevarn(args...)
 
 saves the variables in args to the corresponding textfiles.
 
 Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles. 
-The names of the files are `A_$(fnum).txt`, `B_$(fnum).txt`, `C_$(fnum).txt`.
+The names of the files are `A_fnum[].txt`, `B_fnum[].txt`, `C_fnum[].txt`.
 """
 macro savevarn(args...)
     A = [:(savevar($(fn_savevar(fnum,x)), $(esc(x)))) for x in args]
@@ -101,7 +101,7 @@ loads the values from the textfiles corresponding to `args`.
 If `length(args)` is greater than 1, then it returns the tuple of the values.
 
 Example: `a, b, c = @loadvar A B C` loads 
-the values in `A_$(fnum).txt`, `B_$(fnum).txt`, `C_$(fnum).txt` to the variables `a`, `b`, `c`.
+the values in `A_fnum[].txt`, `B_fnum[].txt`, `C_fnum[].txt` to the variables `a`, `b`, `c`.
 """
 macro loadvarn(args...)
     if length(args) == 1
