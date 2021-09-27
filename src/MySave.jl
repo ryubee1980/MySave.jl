@@ -34,7 +34,7 @@ const dir_savevar = Ref(".")
 is the filename string to which `@savevar` saves the value of a variable.
 """
 fn_savevar(x::Symbol) = joinpath(dir_savevar[], string(x) * ".txt")
-fn_savevar(n::Int64,x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n)*".txt")
+fn_savevar(n::String,x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*n*".txt")
 
 """
     @savevar(args...)
@@ -78,16 +78,19 @@ Example 1: `file_num=3;@savevarn x y` saves the variables x and y in the files `
 
 Example 2: `file_num=3;X, Y=@loadvarn x y` load the values of x and y from the files `x_3.txt` and `y_3.txt`.
 """
-file_num=0
+#file_num=0
 
 """
-    @savevarn(args...)
+    @savevarn(file_num, args...)
 
 saves the variables in args to the corresponding textfiles.
 
 Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles. 
 The names of the files are `A_$(file_num).txt`, `B_$(file_num).txt`, `C_$(file_num).txt`.
 """
-
+macro savevarn(file_num, args...)
+    A = [:(savevar($(fn_savevar(string(file_num),x)), $(esc(x)))) for x in args]
+    quote $(A...); nothing end
+end
 
 end#module
