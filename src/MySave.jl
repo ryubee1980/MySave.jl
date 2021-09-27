@@ -30,7 +30,7 @@ loadvar(fn) = read(fn, String) |> Meta.parse |> eval
 """
     loadexpr(fn)
 
-loads the file `fn` (the filename string of the file) and `Meta.parse |> eval`.
+loads the file `fn` (the filename string of the file) and `Meta.parse |> string`.
 """
 loadexpr(fn) = read(fn, String) |> Meta.parse |> string
 
@@ -88,11 +88,11 @@ end
 """
     @loadexpr(args...)
 
-loads the Expr from the textfiles corresponding to `args`.
+loads the values as Strings from the textfiles corresponding to `args`.
 If `length(args)` is greater than 1, then it returns the tuple of the values.
 
 Example: `a, b, c = @loadexpr A B C` loads 
-the Expr's in `A.txt`, `B.txt`, `C.txt` to the variables `a`, `b`, `c`.
+the Strings in `A.txt`, `B.txt`, `C.txt` to the variables `a`, `b`, `c`.
 """
 macro loadexpr(args...)
     if length(args) == 1
