@@ -34,7 +34,7 @@ const dir_savevar = Ref(".")
 is the filename string to which `@savevar` saves the value of a variable.
 """
 fn_savevar(x::Symbol) = joinpath(dir_savevar[], string(x) * ".txt")
-fn_savevar(n::Int64,x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n)*".txt")
+fn_savevar(n::Base.RefValue{Int64},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n)*".txt")
 
 """
     @savevar(args...)
@@ -78,7 +78,7 @@ Example 1: `fnum[]=3;@savevarn x y` saves the variables x and y in the files `x_
 
 Example 2: `fnum[]=3;X, Y=@loadvarn x y` load the values of x and y from the files `x_3.txt` and `y_3.txt`.
 """
-fnum=Ref(0)
+const fnum=Ref(0)
 
 """
     @savevarn(file_num, args...)
