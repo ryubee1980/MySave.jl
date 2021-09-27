@@ -89,7 +89,7 @@ Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles.
 The names of the files are `A_$(file_num).txt`, `B_$(file_num).txt`, `C_$(file_num).txt`.
 """
 macro savevarn(file_num, args...)
-    A = [:(savevar($(fn_savevar(string(file_num),x)), $(esc(x)))) for x in args]
+    A = [:(savevar($(fn_savevar($(string(file_num)),x)), $(esc(x)))) for x in args]
     quote $(A...); nothing end
 end
 
