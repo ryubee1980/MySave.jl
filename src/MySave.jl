@@ -34,7 +34,7 @@ const dir_savevar = Ref(".")
 is the filename string to which `@savevar` saves the value of a variable.
 """
 fn_savevar(x::Symbol) = joinpath(dir_savevar[], string(x) * ".txt")
-fn_savevar(n::Base.RefValue{Int64},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n)*".txt")
+fn_savevar(n::Base.RefValue{T},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n[])*".txt")
 
 """
     @savevar(args...)
