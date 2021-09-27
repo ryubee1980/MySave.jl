@@ -82,7 +82,7 @@ end
     fnum[]
 
 is the integer number added to the file name in the @savevarn macro. 
-Also is the number of file loaded in the @loadvarn macro.
+Also is the file number loaded in the @loadvarn macro.
 Default value is 0, but one can set other integer values, e.g., fnum[]=2.
 
 Example 1: `fnum[]=3;@savevarn x y` saves the variables x and y in the files `x_3.txt` and `y_3.txt`.
