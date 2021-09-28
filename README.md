@@ -38,6 +38,44 @@ julia> (A,B)===(a,b)
 false #different variables
 ```
 
+# @loadexpr
+This is macro for loading data as String.
+
+Example:
+```sh
+julia> A,B=@loadexpr a b
+```
+The values in the files "a.txt" and "b.txt" are loaded to the variables A and B, respectively as String. Hence,
+
+```sh
+julia> a=4.0
+julia> @savevar a
+julia> A=@loadexpr a
+julia> A
+"4.0"
+julia> typeof(A)
+String
+```
+
+This macro is convenient, for example, to save and load expressions of SymPy.jl, for which @loadvar cannot be used in local scope.
+```sh
+julia> using SymPy
+julia> @vars a b c
+julia> x=a+b+c
+julia> @savevar x
+julia> Xst=@loadexpr x
+julia> typeof(Xst)
+String
+julia> Xst
+"a+b+c"
+julia> X=sympify(Xst) #converting string data to SymPy expression
+julia> X
+a+b+c
+julia> X==x
+true
+```
+
+
 # @savevarn
 This macro is the same as @savevar except that @savevarn adds the integer number fnum[] to the filename. 
 

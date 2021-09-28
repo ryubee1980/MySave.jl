@@ -92,7 +92,7 @@ loads the values as Strings from the textfiles corresponding to `args`.
 If `length(args)` is greater than 1, then it returns the tuple of the values.
 
 Example: `a, b, c = @loadexpr A B C` loads 
-the Strings in `A.txt`, `B.txt`, `C.txt` to the variables `a`, `b`, `c`.
+the data in `A.txt`, `B.txt`, `C.txt` as String to the variables `a`, `b`, `c`.
 """
 macro loadexpr(args...)
     if length(args) == 1
