@@ -68,7 +68,7 @@ julia> typeof(Xst)
 String
 julia> Xst
 "a+b+c"
-julia> X=sympify(Xst) #converting string data to SymPy expression
+julia> X=sympify(Xst) #converting strings into SymPy expression
 julia> X
 a+b+c
 julia> X==x
