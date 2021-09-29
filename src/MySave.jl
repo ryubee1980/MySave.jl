@@ -3,7 +3,7 @@ Module for saving and loading variables.
 
 functions: savevar, loadvar, loadexpr, fn_savevar
 
-macros: @savevar, @loadvar, @savevarn, @loadvarn
+macros: @savevar, @loadvar, @loadexpr, @savevarn, @loadvarn
 
 variables: dir_savevar[], fnum[]
 """
