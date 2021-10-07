@@ -32,7 +32,8 @@ loadvar(fn) = read(fn, String) |> Meta.parse |> eval
 
 loads the file `fn` (the filename string of the file) and `Meta.parse |> string`.
 """
-loadstr(fn) = read(fn, String) |> Meta.parse |> string
+#loadstr(fn) = read(fn, String) |> Meta.parse |> string
+loadstr(fn) = read(fn, String)
 
 """
     dir_savevar[]
