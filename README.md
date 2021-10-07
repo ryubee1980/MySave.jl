@@ -38,19 +38,19 @@ julia> (A,B)===(a,b)
 false #different variables
 ```
 
-# @loadexpr
+# @loadstr
 This is macro for loading data as String.
 
 Example:
 ```sh
-julia> A,B=@loadexpr a b
+julia> A,B=@loadstr a b
 ```
 The values in the files "a.txt" and "b.txt" are loaded to the variables A and B, respectively as String. Hence,
 
 ```sh
 julia> a=4.0
 julia> @savevar a
-julia> A=@loadexpr a
+julia> A=@loadstr a
 julia> A
 "4.0"
 julia> typeof(A)
@@ -63,7 +63,7 @@ julia> using SymPy
 julia> @vars a b c
 julia> x=a+b+c
 julia> @savevar x
-julia> Xst=@loadexpr x
+julia> Xst=@loadstr x
 julia> typeof(Xst)
 String
 julia> Xst

@@ -1,9 +1,9 @@
 """
 Module for saving and loading variables.
 
-functions: savevar, loadvar, loadexpr, fn_savevar
+functions: savevar, loadvar, loadstr, fn_savevar
 
-macros: @savevar, @loadvar, @loadexpr, @savevarn, @loadvarn
+macros: @savevar, @loadvar, @loadstr, @savevarn, @loadvarn
 
 variables: dir_savevar[], fnum[]
 """
@@ -28,11 +28,11 @@ loads the file `fn` (the filename string of the file) and `Meta.parse |> eval`.
 loadvar(fn) = read(fn, String) |> Meta.parse |> eval
 
 """
-    loadexpr(fn)
+    loadstr(fn)
 
 loads the file `fn` (the filename string of the file) and `Meta.parse |> string`.
 """
-loadexpr(fn) = read(fn, String) |> Meta.parse |> string
+loadstr(fn) = read(fn, String) |> Meta.parse |> string
 
 """
     dir_savevar[]
@@ -86,20 +86,20 @@ macro loadvar(args...)
 end
 
 """
-    @loadexpr(args...)
+    @loadstr(args...)
 
 loads the values as Strings from the textfiles corresponding to `args`.
 If `length(args)` is greater than 1, then it returns the tuple of the values.
 
-Example: `a, b, c = @loadexpr A B C` loads 
+Example: `a, b, c = @loadstr A B C` loads 
 the data in `A.txt`, `B.txt`, `C.txt` as String to the variables `a`, `b`, `c`.
 """
-macro loadexpr(args...)
+macro loadstr(args...)
     if length(args) == 1
         x = args[1]
-        :(loadexpr($(fn_savevar(x))))
+        :(loadstr($(fn_savevar(x))))
     else
-        A = [:(loadexpr($(fn_savevar(x)))) for x in args]
+        A = [:(loadstr($(fn_savevar(x)))) for x in args]
         :(($(A...),))
     end
 end
