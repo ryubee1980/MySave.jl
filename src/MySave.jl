@@ -6,6 +6,19 @@ functions: savevar, loadvar, loadstr, fn_savevar
 macros: @savevar, @loadvar, @loadstr, @savevarn, @loadvarn
 
 variables: dir_savevar[], fnum[]
+
+1) The following command set the save/load directory to "./SAVEVAR/" :
+
+julia> dir_savevar[]=SAVEVAR
+
+The default save/load directory is the current one, "./".
+
+
+2) To save/load variables to/from  numbered files, set, for example,
+
+julia> fnum[]=3
+
+and use @savevarn/@loadvarn. See also the helps for @savevarn and @loadvarn.
 """
 module MySave
 
