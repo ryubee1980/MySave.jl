@@ -7,7 +7,7 @@ macros: @savevar, @loadvar, @loadstr, @savevarn, @loadvarn
 
 variables: dir_savevar[], fnum[]
 
-1) To save(load) variables to(from) directory to "./SAVEVAR/", set
+1) To save(load) variables to(from) the directory "./SAVEVAR/", set
 
 julia> dir_savevar[]=SAVEVAR
 
