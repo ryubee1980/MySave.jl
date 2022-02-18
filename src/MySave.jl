@@ -147,9 +147,9 @@ the values in `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt` to the variables `a`, `b`
 macro loadvarn(fnum, args...)
     if length(args) == 1
         x = args[1]
-        :(loadvar($(fn_savevar(Ref(fnum),x))))
+        :(loadvar($(fn_savevar(fnum,x))))
     else
-        A = [:(loadvar($(fn_savevar(Ref(fnum),x)))) for x in args]
+        A = [:(loadvar($(fn_savevar(fnum,x)))) for x in args]
         :(($(A...),))
     end
 end
