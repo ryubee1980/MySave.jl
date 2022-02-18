@@ -129,7 +129,7 @@ Example 1: `fnum[]=3;@savevarn x y` saves the variables x and y in the files `x_
 
 Example 2: `fnum[]=3;X, Y=@loadvarn x y` load the values of x and y from the files `x_3.txt` and `y_3.txt`.
 """
-const   fnum=Ref(0)
+   fnum=Ref(0)
 
 """
     @savevarn(args...)
