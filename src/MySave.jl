@@ -129,7 +129,7 @@ Example 1: `fnum[]=3;@savevarn x y` saves the variables x and y in the files `x_
 
 Example 2: `fnum[]=3;X, Y=@loadvarn x y` load the values of x and y from the files `x_3.txt` and `y_3.txt`.
 """
-const   fnum=Ref(0)
+#const   fnum=Ref(0)
 
 """
     @savevarn(args...)
@@ -139,8 +139,8 @@ saves the variables in args to the corresponding textfiles.
 Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles. 
 The names of the files are `A_fnum[].txt`, `B_fnum[].txt`, `C_fnum[].txt`.
 """
-macro savevarn(args...)
-    A = [:(savevar($(fn_savevar(fnum,x)), $(esc(x)))) for x in args]
+macro savevarn(fnum,args...)
+    A = [:(savevar($(fn_savevar(Ref(fnum),x)), $(esc(x)))) for x in args]
     quote $(A...); nothing end
 end
 
@@ -153,12 +153,12 @@ If `length(args)` is greater than 1, then it returns the tuple of the values.
 Example: `a, b, c = @loadvar A B C` loads 
 the values in `A_fnum[].txt`, `B_fnum[].txt`, `C_fnum[].txt` to the variables `a`, `b`, `c`.
 """
-macro loadvarn(args...)
+macro loadvarn(fnum, args...)
     if length(args) == 1
         x = args[1]
-        :(loadvar($(fn_savevar(fnum,x))))
+        :(loadvar($(fn_savevar(Ref(fnum),x))))
     else
-        A = [:(loadvar($(fn_savevar(fnum,x)))) for x in args]
+        A = [:(loadvar($(fn_savevar(Ref(fnum),x)))) for x in args]
         :(($(A...),))
     end
 end
