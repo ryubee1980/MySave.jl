@@ -133,9 +133,9 @@ Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles.
 The names of the files are `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt`.
 """
 macro savevarn(fnum,args...)
-    #A = [quote savevar($(fn_savevar(Ref(fnum),x)), $(esc(x))) end for x in args]
+    A = [quote savevar($(fn_savevar(Ref(fnum),x)), $(esc(x))) end for x in args]
 
-    A = [quote fnumV=$(esc(fnum));savevar($(fn_savevar(fnumV,x)), $(esc(x))) end for x in args]
+    #A = [quote fnumV=$(esc(fnum));savevar($(fn_savevar(fnumV,x)), $(esc(x))) end for x in args]
     
     #A = [:(savevar($(fn_savevar(fnum,x)), $(esc(x)))) for x in args]
     quote $(A...); nothing end
