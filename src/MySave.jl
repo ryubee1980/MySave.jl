@@ -118,26 +118,15 @@ macro loadstr(args...)
     end
 end
 
-"""
-    fnum[]
 
-is the integer number added to the file name in the @savevarn macro. 
-Also is the file number loaded in the @loadvarn macro.
-Default value is 0, but one can set other integer values, e.g., fnum[]=2.
-
-Example 1: `fnum[]=3;@savevarn x y` saves the variables x and y in the files `x_3.txt` and `y_3.txt`.
-
-Example 2: `fnum[]=3;X, Y=@loadvarn x y` load the values of x and y from the files `x_3.txt` and `y_3.txt`.
-"""
-#const   fnum=Ref(0)
 
 """
-    @savevarn(args...)
+    @savevarn(fnum::Int64, args...)
 
 saves the variables in args to the corresponding textfiles.
 
 Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles. 
-The names of the files are `A_fnum[].txt`, `B_fnum[].txt`, `C_fnum[].txt`.
+The names of the files are `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt`.
 """
 macro savevarn(fnum,args...)
     A = [:(savevar($(fn_savevar(Ref(fnum),x)), $(esc(x)))) for x in args]
@@ -145,13 +134,13 @@ macro savevarn(fnum,args...)
 end
 
 """
-    @loadvarn(args...)
+    @loadvarn(fnum::Int64,args...)
 
 loads the values from the textfiles corresponding to `args`.
 If `length(args)` is greater than 1, then it returns the tuple of the values.
 
 Example: `a, b, c = @loadvar A B C` loads 
-the values in `A_fnum[].txt`, `B_fnum[].txt`, `C_fnum[].txt` to the variables `a`, `b`, `c`.
+the values in `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt` to the variables `a`, `b`, `c`.
 """
 macro loadvarn(fnum, args...)
     if length(args) == 1
