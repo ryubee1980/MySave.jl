@@ -77,25 +77,23 @@ true
 
 
 # @savevarn
-This macro is the same as @savevar except that @savevarn adds the integer number fnum[] to the filename. 
+This macro is the same as @savevar except that @savevarn adds the integer number fnum to the filename. 
 
 Example:
 ```sh
-julia> fnum[]=3
 julia> a=1.2;b=5
-julia> @savevarn a b
+julia> @savevarn 1 a b
 ```
-Then the values of a and b are saved to "a_3.txt" and "b_3.txt", respectively.
+Then the values of a and b are saved to "a_1.txt" and "b_1.txt", respectively.
 
 # @loadvarn
-This is the macro conjugate to @savevarn. That is, if fnum[]=5, for example, "B=@loadvarn a" loads the value in the file "a_5.txt" to the variable B.
+This is the macro conjugate to @savevarn. That is, for example, "B=@loadvarn 5 a" loads the value in the file "a_5.txt" to the variable B.
 
 Example:
 ```sh
-julia> fnum[]=3
 julia> a=1.2;b=5
-julia> @savevarn a b
-julia> A,B=@loadvarn a b
+julia> @savevarn 3 a b
+julia> A,B=@loadvarn 3 a b
 julia> (A,B)==(a,b)
 true #same values
 julia> (A,B)===(a,b)
