@@ -32,7 +32,7 @@ greet() = print("Hello My module for saving and loading files!")
 saves the value of `x` to the file `fn`, where `fn` is the filename string of the file.
 """
 savevar(fn, x) = write(fn, string(x))
-function savevar_num(n,x,xstr::String)  
+function savevar_num(n::Int64,x,xstr::String)  
     fn=joinpath(dir_savevar[], xstr*"_"*string(n)*".txt")
     savevar(fn, x)
     nothing
@@ -47,6 +47,10 @@ end
 loads the file `fn` (the filename string of the file) and `Meta.parse |> eval`.
 """
 loadvar(fn) = read(fn, String) |> Meta.parse |> eval
+function loadvar_num(n::Int64,xstr::String)  
+    fn=joinpath(dir_savevar[], xstr*"_"*string(n)*".txt")
+    loadvar(fn)
+end
 
 """
     loadstr(fn)
@@ -75,7 +79,7 @@ is the filename string to which `@savevar` saves the value of a variable.
 fn_savevar(x::Symbol) = joinpath(dir_savevar[], string(x) * ".txt")
 #fn_savevar(n::Base.RefValue{Int64},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n[])*".txt")
 #fn_savevar(n::Symbol,x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n)*".txt")
-fn_savevar(n::Base.RefValue{Int64},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n[])*".txt")
+#fn_savevar(n::Base.RefValue{Int64},x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n[])*".txt")
 #fn_savevar(n::Int64,x::Symbol)=joinpath(dir_savevar[], string(x)*"_"*string(n)*".txt")
 
 
@@ -161,11 +165,19 @@ the values in `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt` to the variables `a`, `b`
 """
 macro loadvarn(fnum, args...)
     
+    # if length(args) == 1
+    #     x = args[1]
+    #     :(loadvar($(fn_savevar(fnum,x))))
+    # else
+    #     A = [:(loadvar($(fn_savevar(fnum,x)))) for x in args]
+    #     :(($(A...),))
+    # end
+
     if length(args) == 1
         x = args[1]
-        :(loadvar($(fn_savevar(fnum,x))))
+        :(loadvar_num($(esc(fnum)), $(xstrng(x))))
     else
-        A = [:(loadvar($(fn_savevar(fnum,x)))) for x in args]
+        A = [:(loadvar_num($(esc(fnum)), $(xstrng(x)))) for x in args]
         :(($(A...),))
     end
 end
