@@ -84,7 +84,12 @@ Example:
 julia> a=1.2;b=5
 julia> @savevarn 1 a b
 ```
-Then the values of a and b are saved to "a_1.txt" and "b_1.txt", respectively.
+Then the values of a and b are saved to "a_1.txt" and "b_1.txt", respectively. One can instead do the following to get the same result:
+```sh
+julia> a=1.2;b=5;n=1
+julia> @savevarn n a b
+```
+
 
 # @loadvarn
 This is the macro conjugate to @savevarn. That is, for example, "B=@loadvarn 5 a" loads the value in the file "a_5.txt" to the variable B.
@@ -99,6 +104,14 @@ true #same values
 julia> (A,B)===(a,b)
 false #different variables
 ```
-
-# fnum[ ]
-The integer number added to the file name by @savevarn. Its default value is 0.
+One can instead do the following to get the same result:
+```sh
+julia> a=1.2;b=5
+julia> @savevarn 3 a b 
+julia> n=3
+julia> A,B=@loadvarn n a b
+julia> (A,B)==(a,b)
+true #same values
+julia> (A,B)===(a,b)
+false #different variables
+```
