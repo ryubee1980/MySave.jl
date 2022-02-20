@@ -32,8 +32,8 @@ greet() = print("Hello My module for saving and loading files!")
 saves the value of `x` to the file `fn`, where `fn` is the filename string of the file.
 """
 savevar(fn, x) = write(fn, string(x))
-function savevar_num(n,x)  
-    fn=joinpath(dir_savevar[], string(Symbol(x))*"_"*string(n)*".txt")
+function savevar_num(n,x,xsym)  
+    fn=joinpath(dir_savevar[], string(xsym)*"_"*string(n)*".txt")
     savevar(fn, x)
     nothing
 end
@@ -140,7 +140,7 @@ The names of the files are `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt`.
 """
 macro savevarn(fnum,args...)
     #A = [quote savevar($(fn_savevar(Ref(fnum),x)), $(esc(x))) end for x in args]
-    A = [quote savevar_num($(esc(fnum)), $(esc(x))) end for x in args]
+    A = [quote savevar_num($(esc(fnum)), $(esc(x)), x) end for x in args]
     
    # A = [quote fnumV=$fnum;savevar($(fn_savevar(fnumV,x)), $(esc(x))) end for x in args]
     
