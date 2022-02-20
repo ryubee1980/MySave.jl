@@ -140,7 +140,7 @@ The names of the files are `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt`.
 """
 macro savevarn(fnum,args...)
     #A = [quote savevar($(fn_savevar(Ref(fnum),x)), $(esc(x))) end for x in args]
-    A = [quote savevarn($(esc(n)), $(esc(x))) end for x in args]
+    A = [quote savevarn($(esc(fnum)), $(esc(x))) end for x in args]
     
    # A = [quote fnumV=$fnum;savevar($(fn_savevar(fnumV,x)), $(esc(x))) end for x in args]
     
