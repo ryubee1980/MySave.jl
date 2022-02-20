@@ -32,8 +32,9 @@ greet() = print("Hello My module for saving and loading files!")
 saves the value of `x` to the file `fn`, where `fn` is the filename string of the file.
 """
 savevar(fn, x) = write(fn, string(x))
-function savevarn(n,x)   
-    fn=joinpath(dir_savevar[], string(:x)*"_"*string(n)*".txt")
+function savevarn(n,x)  
+    a=:x 
+    fn=joinpath(dir_savevar[], string(a)*"_"*string(n)*".txt")
     savevar(fn, x)
     nothing
 end
