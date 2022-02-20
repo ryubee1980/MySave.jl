@@ -33,7 +33,7 @@ saves the value of `x` to the file `fn`, where `fn` is the filename string of th
 """
 savevar(fn, x) = write(fn, string(x))
 function savevar_num(n,x)  
-    fn=joinpath(dir_savevar[], string(:x)*"_"*string(n)*".txt")
+    fn=joinpath(dir_savevar[], string(Symbol(x))*"_"*string(n)*".txt")
     savevar(fn, x)
     nothing
 end
