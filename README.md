@@ -77,8 +77,8 @@ true
 
 
 # @savevarn
-This macro is the same as @savevar except that @savevarn adds the integer number fnum to the filename. 
-
+This macro is the same as @savevar except that @savevarn adds the integer number to the filename. 
+Specify the integer as the first argument:
 Example:
 ```sh
 julia> a=1.2;b=5
