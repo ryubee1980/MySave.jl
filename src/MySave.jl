@@ -141,8 +141,7 @@ end
 
 saves the variables in args to the corresponding textfiles.
 
-Example: `@savevarn A B C` saves the variables `A`, `B`, `C` to textfiles. 
-The names of the files are `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt`.
+Example: `@savevarn fnum A B C` saves the variables `A`, `B`, `C` to textfiles, where fnum is an integer that appears in the file name; the names of the files are `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt`. 
 """
 macro savevarn(fnum,args...)
     #A = [quote savevar($(fn_savevar(Ref(fnum),x)), $(esc(x))) end for x in args]
@@ -160,7 +159,7 @@ end
 loads the values from the textfiles corresponding to `args`.
 If `length(args)` is greater than 1, then it returns the tuple of the values.
 
-Example: `a, b, c = @loadvar A B C` loads 
+Example: `a, b, c = @loadvar fnum A B C` loads 
 the values in `A_fnum.txt`, `B_fnum.txt`, `C_fnum.txt` to the variables `a`, `b`, `c`.
 """
 macro loadvarn(fnum, args...)
