@@ -32,11 +32,23 @@ greet() = print("Hello My module for saving and loading files!")
 saves the value of `x` to the file `fn`, where `fn` is the filename string of the file.
 """
 savevar(fn, x) = write(fn, string(x))
+
+"""
+    savevar_num(n::Int64, x, xstr::String)
+
+saves the value of `x` to the file `xstr_n.txt`.
+"""
 function savevar_num(n::Int64,x,xstr::String)  
     fn=joinpath(dir_savevar[], xstr*"_"*string(n)*".txt")
     savevar(fn, x)
     nothing
 end
+
+"""
+    xstrng(xsym::Symbol)
+
+transforms the Symbol `xsym` to a String.
+"""
 function xstrng(xsym::Symbol)
     string(xsym)
 end
@@ -47,6 +59,12 @@ end
 loads the file `fn` (the filename string of the file) and `Meta.parse |> eval`.
 """
 loadvar(fn) = read(fn, String) |> Meta.parse |> eval
+
+"""
+    loadvar_num(n::Int64,xstr::String)
+
+loads the file `xstr_n.txt` and `Meta.parse |> eval`.
+"""
 function loadvar_num(n::Int64,xstr::String)  
     fn=joinpath(dir_savevar[], xstr*"_"*string(n)*".txt")
     loadvar(fn)
