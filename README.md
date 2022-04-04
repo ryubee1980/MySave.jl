@@ -2,12 +2,12 @@
 Package for saving and loading files.
 
 Copyright (c) 2021 Ryuichi Okamoto <<ryubee@gmail.com>>  
-Licence: https://opensource.org/licenses/MIT
+License: https://opensource.org/licenses/MIT
 
 New macros, @savevarn, @loadvarn, and @loadstr have been added to Gen Kuroki's MySave.jl in <<https://github.com/genkuroki/MyUtils.jl.git>>.
 
 Copyright (c) 2021 Gen Kuroki  
-Licence: https://opensource.org/licenses/MIT
+License: https://opensource.org/licenses/MIT
 
 ## Installation
 ```sh
