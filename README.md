@@ -1,6 +1,13 @@
 # MySave
 Package for saving and loading files.
 
+ #Copyright (c) 2021 Ryuichi Okamoto <ryubee@gmail.com>
+Licence: https://opensource.org/licenses/MIT
+New macros, @savevarn, @loadvarn, and @loadstr have been added to Gen Kuroki's MySave.jl in <https://github.com/genkuroki/MyUtils.jl.git>
+
+Copyright (c) 2021 Gen Kuroki
+Licence: https://opensource.org/licenses/MIT
+
 ## Usage
 # dir_savevar[ ]
 This variable specifies the directory to which the macro @savevar/@savevarn saves files. The macro @loadvar/@loadvarn also loads files from this directory.
