@@ -9,6 +9,12 @@ New macros, @savevarn, @loadvarn, and @loadstr have been added to Gen Kuroki's M
 Copyright (c) 2021 Gen Kuroki  
 Licence: https://opensource.org/licenses/MIT
 
+## Installation
+```sh
+julia> ]
+pkg> add https://github.com/ryubee1980/MySave.jl.git
+```
+
 ## Usage
 # dir_savevar[ ]
 This variable specifies the directory to which the macro @savevar/@savevarn saves files. The macro @loadvar/@loadvarn also loads files from this directory.
