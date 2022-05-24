@@ -30,7 +30,7 @@ greet() = print("Hello My module for saving and loading files!")
 """
     readff("fn"::String, nc::Int)
 
-Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc::Int``. The lines that begin with #, @, or "" in the file are ignored.
+Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc``. The lines that begin with #, @, or " in the file are ignored.
 """
 function readff(file,nc)
     fn=joinpath(dir_savevar[], file)
