@@ -9,7 +9,7 @@
 """
 Module for saving and loading variables.
 
-functions: savevar, loadvar, loadstr, fn_savevar
+functions: readff,savevar, loadvar, loadstr, fn_savevar
 
 macros: @savevar, @loadvar, @loadstr, @savevarn, @loadvarn
 
@@ -26,6 +26,31 @@ module MySave
 
 
 greet() = print("Hello My module for saving and loading files!")
+
+"""
+    readff("fn"::String, nc::Int)
+
+Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc::Int``. The lines that begin with #, @, or "" in the file are ignored.
+"""
+function readff(file,nc)
+    fn=joinpath(dir_savevar[], file)
+    fr=open(fn,"r")
+    data=Array{Float64}(undef,0,nc)
+    rl=Array{Float64}(undef,1, nc)
+    while !eof(fr)
+        line=readline(fr)
+        s=split(line)
+        if(s[1][1]!='#' && s[1][1]!='@' && s[1][1]!='"')
+            for i in 1:nc
+                rl[i]=parse(Float64,s[i])
+            end
+            data=vcat(data,rl)
+        end
+
+    end
+    close(fr)
+    data
+end
 
 
 """

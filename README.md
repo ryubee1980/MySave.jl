@@ -23,6 +23,14 @@ Its default value is "."; that is, the macros save to (or, load from) the curren
 julia> dir_savevar[]="DIR"
 ```
 
+# readff(file, nc)
+This is a function for reading a data file. The delimiter in the file should be space or tab. The output is a two dimensional array of Float64, Array{Float64, 2}. The second variable "nc" is the column number of the data.
+
+Example:
+```sh
+julia> data=readff("data.txt", 3)
+```
+
 
 # @savevar
 This is a macro for saving variables. 
