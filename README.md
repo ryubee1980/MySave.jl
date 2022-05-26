@@ -24,7 +24,7 @@ julia> dir_savevar[]="DIR"
 ```
 
 # readff(file, nc)
-This is a function for reading a data file. The delimiter in the file should be space or tab. The output is a two dimensional array of Float64, Array{Float64, 2}. The second variable "nc" is the column number of the data.
+This is a function for reading a data file. The delimiter in the file should be space or tab. The output is a two dimensional array of Float64, Array{Float64, 2}. The second variable "nc" is the number of columns in the data file.
 
 Example:
 ```sh
