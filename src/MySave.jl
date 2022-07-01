@@ -40,13 +40,14 @@ function readff(file,nc)
     while !eof(fr)
         line=readline(fr)
         s=split(line)
-        if(s[1][1]!='#' && s[1][1]!='@' && s[1][1]!='"')
-            for i in 1:nc
-                rl[i]=parse(Float64,s[i])
+        if(sizeof(s)!=0)
+            if(s[1][1]!='#' && s[1][1]!='@' && s[1][1]!='"')
+                for i in 1:nc
+                    rl[i]=parse(Float64,s[i])
+                end
+                data=vcat(data,rl)
             end
-            data=vcat(data,rl)
         end
-
     end
     close(fr)
     data
