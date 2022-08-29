@@ -65,9 +65,10 @@ function readff0(file,nc)
             end
         end
     end
+    close(fr)
 
-
-
+    fn=joinpath(dir_savevar[], file)
+    fr=open(fn,"r")
     data=Array{Float64}(undef,N,nc)
     rl=Array{Float64}(undef,1, nc)
     i=1
