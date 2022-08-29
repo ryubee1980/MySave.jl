@@ -32,6 +32,8 @@ greet() = print("Hello My module for saving and loading files!")
 
 Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc``. The lines that begin with #, @, or " in the file are ignored.
 """
+
+# This original code is extremely slow (for a large data file) due to huge memory allocation as calling vcat many times.
 # function readff(file,nc)
 #     fn=joinpath(dir_savevar[], file)
 #     fr=open(fn,"r")
@@ -53,6 +55,7 @@ Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the col
 #     data
 # end
 
+# improved version.
 function readff(file,nc)
     fn=joinpath(dir_savevar[], file)
     fr=open(fn,"r")
