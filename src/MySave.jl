@@ -53,6 +53,41 @@ function readff(file,nc)
     data
 end
 
+function readff0(file,nc)
+    fn=joinpath(dir_savevar[], file)
+    fr=open(fn,"r")
+    N=0
+    while !eof(fr)
+        line=readline(fr)
+        if(sizeof(line)!=0)
+            if(line[1][1]!='#' && line[1][1]!='@' && line[1][1]!='"')
+                N=N+1
+            end
+        end
+    end
+
+
+
+    data=Array{Float64}(undef,N,nc)
+    rl=Array{Float64}(undef,1, nc)
+    i=1
+    while !eof(fr)
+        line=readline(fr)
+        s=split(line)
+        if(sizeof(s)!=0)
+            if(s[1][1]!='#' && s[1][1]!='@' && s[1][1]!='"')
+                for i in 1:nc
+                    rl[i]=parse(Float64,s[i])
+                end
+                data[i,:] .= rl
+                i=i+1
+            end
+        end
+    end
+    close(fr)
+    data
+end
+
 
 """
     savevar(fn, x)
