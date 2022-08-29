@@ -80,7 +80,7 @@ function readff0(file,nc)
                 for i in 1:nc
                     rl[i]=parse(Float64,s[i])
                 end
-                data[i,:] .= rl
+                data[i,:] = rl
                 i=i+1
             end
         end
