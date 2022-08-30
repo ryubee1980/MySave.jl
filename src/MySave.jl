@@ -33,29 +33,6 @@ greet() = print("Hello My module for saving and loading files!")
 Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc``. The lines that begin with #, @, or " in the file are ignored.
 """
 
-# This original code is extremely slow (for a large data file) due to huge memory allocation as calling vcat many times.
-# function readff(file,nc)
-#     fn=joinpath(dir_savevar[], file)
-#     fr=open(fn,"r")
-#     data=Array{Float64}(undef,0,nc)
-#     rl=Array{Float64}(undef,1, nc)
-#     while !eof(fr)
-#         line=readline(fr)
-#         s=split(line)
-#         if(sizeof(s)!=0)
-#             if(s[1][1]!='#' && s[1][1]!='@' && s[1][1]!='"')
-#                 for i in 1:nc
-#                     rl[i]=parse(Float64,s[i])
-#                 end
-#                 data=vcat(data,rl)
-#             end
-#         end
-#     end
-#     close(fr)
-#     data
-# end
-
-# improved version.
 function readff(file,nc)
     fn=joinpath(dir_savevar[], file)
     fr=open(fn,"r")
@@ -91,6 +68,29 @@ function readff(file,nc)
     close(fr)
     data
 end
+
+# This original code is extremely slow (for a large data file) due to huge memory allocation as calling vcat many times.
+# function readff(file,nc)
+#     fn=joinpath(dir_savevar[], file)
+#     fr=open(fn,"r")
+#     data=Array{Float64}(undef,0,nc)
+#     rl=Array{Float64}(undef,1, nc)
+#     while !eof(fr)
+#         line=readline(fr)
+#         s=split(line)
+#         if(sizeof(s)!=0)
+#             if(s[1][1]!='#' && s[1][1]!='@' && s[1][1]!='"')
+#                 for i in 1:nc
+#                     rl[i]=parse(Float64,s[i])
+#                 end
+#                 data=vcat(data,rl)
+#             end
+#         end
+#     end
+#     close(fr)
+#     data
+# end
+
 
 
 """
