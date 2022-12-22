@@ -24,7 +24,7 @@ The default save/load directory is the current one, "./".
 module MySave
 
 
-greet() = print("Hello My module for saving and loading files!")
+greeting() = print("Hello My module for saving and loading files!")
 
 """
     readff("fn"::String, nc::Int)
