@@ -5,7 +5,6 @@
 #Copyright (c) 2021 Gen Kuroki
 #License: https://opensource.org/licenses/MIT
 
-
 """
 Module for saving and loading variables.
 

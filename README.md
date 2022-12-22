@@ -113,7 +113,7 @@ julia> @savevarn n a b
 
 
 # @loadvarn
-This is the macro conjugate to @savevarn. That is, for example, "B=@loadvarn 5 a" loads the value in the file "a_5.txt" to the variable B.
+This is the macro conjugate to @savevarn. That is, for instance, "B=@loadvarn 5 a" loads the value in the file "a_5.txt" to the variable B.
 
 Example:
 ```sh
