@@ -37,7 +37,7 @@ function readff(file,nc;skip_chars=['#','@','"'])
     while !eof(fr)
         line=readline(fr)
         if(sizeof(line)!=0)
-            if(line[1][1]!='#' && line[1][1]!='@' && line[1][1]!='"')
+            if line[1][1] ∉ skip_chars
                 N=N+1
             end
         end
