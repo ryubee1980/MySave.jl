@@ -23,8 +23,8 @@ Its default value is "."; that is, the macros save to (or, load from) the curren
 julia> dir_savevar[]="DIR"
 ```
 
-# readff(file, nc)
-This is a function for reading a data file. The delimiter in the file should be space or tab. The output is a two dimensional array of Float64, Array{Float64, 2}. The second variable "nc" is the number of columns in the data file. The lines starting with #, @, and " are ignored. Blank lines are also ignored.
+# readff(file, nc; skip_chars)
+This is a function for reading a data file. The delimiter in the file should be space or tab. The output is a two dimensional array of Float64, Array{Float64, 2}. The second variable "nc" is the number of columns in the data file. The lines starting with a character contained in "skip_chars" are ignored. The default value is skip_chars=['#', '@', '"'].
 
 Example:
 ```sh
