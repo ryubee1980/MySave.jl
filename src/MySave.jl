@@ -30,7 +30,7 @@ greeting() = print("Hello My module for saving and loading files!")
 
 Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc``. The lines that begin with #, @, or " in the file are ignored.
 """
-function readff(file,nc)
+function readff(file,nc;skip_chars=['#','@','"'])
     fn=joinpath(dir_savevar[], file)
     fr=open(fn,"r")
     N=0
@@ -44,7 +44,7 @@ function readff(file,nc)
     end
     close(fr)
 
-    fn=joinpath(dir_savevar[], file;skip_chars=['#','@','"'])
+    fn=joinpath(dir_savevar[], file)
     fr=open(fn,"r")
     data=Array{Float64}(undef,N,nc)
     rl=Array{Float64}(undef,1, nc)
