@@ -26,9 +26,9 @@ module MySave
 greeting() = print("Hello My module for saving and loading files!")
 
 """
-    readff("fn"::String, nc::Int; skip_chars::Vector{char})
+    readff("fn"::String, nc::Int; skip_chars::Vector{Char})
 
-Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc``. The lines that begin with a charactor contained in ``skip_chars`` are ignored. The default value of ``skip_chars`` is ['#','@','"'].
+Read numerical data in a file named ``fn``.  The variable ``nc::Int`` is the column number of the data. The output is a two dimensional array ``Array{Float64,2}`` whose column number is ``nc``. The lines that begin with a charactor contained in ``skip_chars ::Vector{Char}`` are ignored. The default value of ``skip_chars`` is ['#','@','"'].
 """
 function readff(file,nc;skip_chars=['#','@','"'])
     fn=joinpath(dir_savevar[], file)
