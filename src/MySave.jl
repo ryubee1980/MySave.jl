@@ -70,6 +70,8 @@ function readff(file,nc;skip_chars=['#','@','"'])
         end
     end
     close(fr)
+    print(N)
+    println(" lines")
     data
 end
 
