@@ -16,7 +16,7 @@ variables: dir_savevar[]
 
 To save(load) variables to(from) the directory "./SAVEVAR/", set
 
-julia> dir_savevar[]=SAVEVAR
+julia> dir_savevar[]="SAVEVAR"
 
 The default save/load directory is the current one, "./".
 
