@@ -22,6 +22,7 @@ The default save/load directory is the current one, "./".
 
 """
 module MySave
+using Quadmath
 
 greeting() = print("Hello My module for saving and loading files!")
 
